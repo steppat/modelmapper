@@ -8,14 +8,15 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
 import org.modelmapper.convention.MatchingStrategies;
 
-import br.com.caelumm.mapper.modelo.Cliente;
-import br.com.caelumm.mapper.modelo.Endereco;
-import br.com.caelumm.mapper.modelo.Nome;
-import br.com.caelumm.mapper.modelo.Pedido;
-import br.com.caelumm.mapper.modelo.PedidoFlat;
+import br.com.caelum.mapper.PedidoDto;
+import br.com.caelum.mapper.modelo.Cliente;
+import br.com.caelum.mapper.modelo.Endereco;
+import br.com.caelum.mapper.modelo.Nome;
+import br.com.caelum.mapper.modelo.Pedido;
+import br.com.caelum.mapper.modelo.PedidoFlat;
 
 
-public class SimpeModelMapperTest {
+public class ModelMapperFrameworkTest {
 	
 	private ModelMapper mapper;
 
@@ -88,7 +89,7 @@ public class SimpeModelMapperTest {
 	private PedidoDto geraPedidoDto() {
 		
 		PedidoDto dto = new PedidoDto();
-		dto.setPrimeroNomeCliente("João");
+		dto.setPrimeroNomeCliente("Jo??o");
 		dto.setRuaDestino("Catete");
 		dto.setNumeroDestino("50");
 		dto.setCidadeDestino("Rio");

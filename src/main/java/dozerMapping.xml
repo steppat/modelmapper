@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+	<mapping map-id="pedidoFlat">
+		<class-a>br.com.caelum.mapper.modelo.PedidoFlat</class-a>
+		<class-b>br.com.caelum.mapper.PedidoDto</class-b>
+		<field>
+			<a>numero</a>
+			<b>numeroDestino</b>
+		</field>
+		<field>
+			<a>rua</a>
+			<b>ruaDestino</b>
+		</field>
+		<field>
+			<a>cep</a>
+			<b>cepDestino</b>
+		</field>
+		<field>
+			<a>cidade</a>
+			<b>cidadeDestino</b>
+		</field>
+		<field>
+			<a>cidade</a>
+			<b>cidadeDestino</b>
+		</field>
+		<field>
+			<a>nome</a>
+			<b>primeroNomeCliente</b>
+		</field>
+	</mapping>
+
+</mappings>

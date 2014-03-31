@@ -1,4 +1,4 @@
-package br.com.caelumm.mapper.modelo;
+package br.com.caelum.mapper.modelo;
 
 public class PedidoFlat {
 
@@ -8,8 +8,6 @@ public class PedidoFlat {
 	private String cidade;
 	private String cep;
 
-	
-	
 	public String getNumero() {
 		return numero;
 	}

@@ -1,4 +1,4 @@
-package br.com.caelumm.mapper.modelo;
+package br.com.caelum.mapper.modelo;
 
 public class Cliente {
 

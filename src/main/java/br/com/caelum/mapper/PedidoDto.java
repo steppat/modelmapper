@@ -1,4 +1,4 @@
-package br.com.caelumm.mapper;
+package br.com.caelum.mapper;
 
 public class PedidoDto {
 	
