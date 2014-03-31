@@ -8,12 +8,14 @@
 	<name>modelmapper</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
+	
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.5</version>
 			<scope>test</scope>
 		</dependency>
+	
 		<dependency>
 			<groupId>org.modelmapper</groupId>
 			<artifactId>modelmapper</artifactId>
@@ -24,6 +26,12 @@
 		    <groupId>net.sf.dozer</groupId>
 		    <artifactId>dozer</artifactId>
 		    <version>5.4.0</version>
+		</dependency>
+		
+		<dependency>
+		   <groupId>ma.glasnost.orika</groupId>
+		   <artifactId>orika-core</artifactId>
+		   <version>1.4.2</version>
 		</dependency>
 	</dependencies>
 </project>
