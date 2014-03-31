@@ -10,9 +10,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import br.com.caelum.mapper.PedidoDto;
-import br.com.caelum.mapper.modelo.Cliente;
-import br.com.caelum.mapper.modelo.Endereco;
-import br.com.caelum.mapper.modelo.Nome;
 import br.com.caelum.mapper.modelo.PedidoFlat;
 
 
@@ -36,7 +33,7 @@ public class DozerFrameworkTest {
 		
 		PedidoDto dto = mapper.map(pedidoFlat, PedidoDto.class, mapIdNoXml);
 		
-		Assert.assertEquals(pedidoFlat.getNumero(), dto.getNumeroDestino());
+		Assert.assertEquals(String.valueOf(pedidoFlat.getNumero()), dto.getNumeroDestino());
 	}
 
 	private PedidoFlat geraPedidoFlat() {
@@ -45,26 +42,7 @@ public class DozerFrameworkTest {
 		pedidoFlat.setCidade("Rio");
 		pedidoFlat.setNome("Nome");
 		pedidoFlat.setRua("Catete");
+		pedidoFlat.setNumero(50);
 		return pedidoFlat;
-	}
-
-	private Cliente clienteNico() {
-		Endereco endereco = new Endereco().
-		comCep("20040-030").
-		comCidade("Rio de Janeiro").
-		comNumero("50").
-		comRua("Rua do Ouvidor");
-
-		return new Cliente(new Nome("Nico", "Steppat"), endereco);
-	}
-
-	private Endereco naRuaBuarqueDeMacedo() {
-		Endereco endereco = new Endereco().
-		comCep("22220-030").
-		comCidade("Rio de Janeiro").
-		comNumero("50").
-		comRua("Rua Buarque de Macedo");
-		
-		return endereco;
 	}
 }

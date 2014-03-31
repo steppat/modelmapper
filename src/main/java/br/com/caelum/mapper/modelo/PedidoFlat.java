@@ -4,15 +4,15 @@ public class PedidoFlat {
 
 	private String nome;
 	private String rua;
-	private String numero;
+	private int numero;
 	private String cidade;
 	private String cep;
 
-	public String getNumero() {
+	public int getNumero() {
 		return numero;
 	}
 
-	public void setNumero(String numero) {
+	public void setNumero(int numero) {
 		this.numero = numero;
 	}
 

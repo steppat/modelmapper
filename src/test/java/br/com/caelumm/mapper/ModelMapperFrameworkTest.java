@@ -51,7 +51,7 @@ public class ModelMapperFrameworkTest {
 		
 		Assert.assertEquals(pedidoFlat.getNome(),dto.getPrimeroNomeCliente());
 		Assert.assertEquals(pedidoFlat.getRua(),dto.getRuaDestino());
-		Assert.assertEquals(pedidoFlat.getNumero(),dto.getNumeroDestino());
+		Assert.assertEquals(String.valueOf(pedidoFlat.getNumero()), dto.getNumeroDestino());
 		Assert.assertEquals(pedidoFlat.getCidade(),dto.getCidadeDestino());
 		Assert.assertEquals(pedidoFlat.getCep(),dto.getCepDestino());
 	}
@@ -71,7 +71,7 @@ public class ModelMapperFrameworkTest {
 
 		PedidoDto dto = mapper.map(pedido, PedidoDto.class);
 		
-		Assert.assertEquals(pedido.getDestino().getNumero(), dto.getNumeroDestino());
+		Assert.assertEquals(pedido.getDestino().getNumero(), String.valueOf(dto.getNumeroDestino()));
 		Assert.assertEquals(pedido.getDestino().getRua(), dto.getRuaDestino());
 		Assert.assertEquals(pedido.getDestino().getCidade(), dto.getCidadeDestino());
 		Assert.assertEquals(pedido.getDestino().getCep(), dto.getCepDestino());
