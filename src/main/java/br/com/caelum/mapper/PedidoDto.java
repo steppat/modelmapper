@@ -2,18 +2,18 @@ package br.com.caelum.mapper;
 
 public class PedidoDto {
 	
-	private String primeroNomeCliente;
+	private String primeiroNomeCliente;
 	private String ruaDestino;
 	private String numeroDestino;
 	private String cidadeDestino;
 	private String cepDestino;
 
-	public String getPrimeroNomeCliente() {
-		return primeroNomeCliente;
+	public String getPrimeiroNomeCliente() {
+		return primeiroNomeCliente;
 	}
 
-	public void setPrimeroNomeCliente(String primeroNomeCliente) {
-		this.primeroNomeCliente = primeroNomeCliente;
+	public void setPrimeiroNomeCliente(String primeiroNomeCliente) {
+		this.primeiroNomeCliente = primeiroNomeCliente;
 	}
 
 	public String getRuaDestino() {

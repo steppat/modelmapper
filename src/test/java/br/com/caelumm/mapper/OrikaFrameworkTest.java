@@ -1,12 +1,12 @@
 package br.com.caelumm.mapper;
 
 import junit.framework.Assert;
+import ma.glasnost.orika.MapperFacade;
+import ma.glasnost.orika.MapperFactory;
+import ma.glasnost.orika.impl.DefaultMapperFactory;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.modelmapper.ModelMapper;
-import org.modelmapper.PropertyMap;
-import org.modelmapper.convention.MatchingStrategies;
 
 import br.com.caelum.mapper.PedidoDto;
 import br.com.caelum.mapper.modelo.Cliente;
@@ -15,15 +15,33 @@ import br.com.caelum.mapper.modelo.Nome;
 import br.com.caelum.mapper.modelo.Pedido;
 import br.com.caelum.mapper.modelo.PedidoFlat;
 
+public class OrikaFrameworkTest {
 
-public class ModelMapperFrameworkTest {
-	
-	private ModelMapper mapper;
+	private MapperFacade mapper;
 
 	@Before
-	public void setup() {
-		this.mapper = new ModelMapper();
-		this.mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
+	public void setup() {		
+		MapperFactory mapperFactory = new DefaultMapperFactory.Builder().build();
+		mapperFactory.classMap(PedidoFlat.class, PedidoDto.class).
+			field("rua", "ruaDestino").
+			field("cidade", "cidadeDestino").
+			field("cep", "cepDestino").
+			field("numero", "numeroDestino").
+			field("nome", "primeiroNomeCliente").
+		register();
+		
+		mapperFactory.classMap(Pedido.class, PedidoDto.class).
+			fieldAToB("destino.rua", "ruaDestino").
+			fieldAToB("destino.cidade", "cidadeDestino").
+			fieldAToB("destino.cep", "cepDestino").
+			fieldAToB("destino.numero", "numeroDestino").
+			fieldAToB("cliente.nome.primeiroNome", "primeiroNomeCliente").
+		register();
+		
+		
+		this.mapper = mapperFactory.getMapperFacade();
+
+
 	}
 	
 	
@@ -61,14 +79,6 @@ public class ModelMapperFrameworkTest {
 		
 		Pedido pedido = geraPedido();
 		
-		mapper.addMappings(new PropertyMap<Pedido, PedidoDto>() {
-
-			@Override
-			protected void configure() {
-				map().setPrimeiroNomeCliente(source.getCliente().getNome().getPrimeiroNome());
-			}
-		});
-
 		PedidoDto dto = mapper.map(pedido, PedidoDto.class);
 		
 		Assert.assertEquals(pedido.getDestino().getNumero(), String.valueOf(dto.getNumeroDestino()));
@@ -101,7 +111,7 @@ public class ModelMapperFrameworkTest {
 		PedidoFlat pedidoFlat = new PedidoFlat();
 		pedidoFlat.setCep("20040-030");
 		pedidoFlat.setCidade("Rio");
-		pedidoFlat.setNome("Nome");
+		pedidoFlat.setNome("Joao");
 		pedidoFlat.setRua("Catete");
 		return pedidoFlat;
 	}
