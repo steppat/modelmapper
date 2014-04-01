@@ -1,7 +1,5 @@
-modelmapper
-===========
+Simples testes usando object-to-object mapper: 
 
-simple modelmapper test usando 
-
-1) http://modelmapper.org/
-2) dozer
+1) ModelMapper: http://modelmapper.org/
+2) Dozer: http://dozer.sourceforge.net/
+3) Orika: http://orika-mapper.github.io/
