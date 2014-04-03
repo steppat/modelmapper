@@ -27,8 +27,8 @@
 			<b>cidadeDestino</b>
 		</field>
 		<field>
-			<a>nome</a>
-			<b>primeiroNomeCliente</b>
+			<a>nomeCliente</a>
+			<b>cliente</b>
 		</field>
 	</mapping>
 

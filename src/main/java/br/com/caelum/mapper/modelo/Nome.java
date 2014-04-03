@@ -2,8 +2,8 @@ package br.com.caelum.mapper.modelo;
 
 public class Nome {
 
-	private String primeiroNome;
 	private String sobreNome;
+	private String primeiroNome;
 
 	public Nome(String primeiroNome, String sobreNome) {
 		this.primeiroNome = primeiroNome;

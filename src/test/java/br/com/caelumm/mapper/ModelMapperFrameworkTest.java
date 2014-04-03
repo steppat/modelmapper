@@ -14,6 +14,7 @@ import br.com.caelum.mapper.modelo.Endereco;
 import br.com.caelum.mapper.modelo.Nome;
 import br.com.caelum.mapper.modelo.Pedido;
 import br.com.caelum.mapper.modelo.PedidoFlat;
+import br.com.caelum.mapper.modelo.Produto;
 
 
 public class ModelMapperFrameworkTest {
@@ -26,7 +27,6 @@ public class ModelMapperFrameworkTest {
 		this.mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
 	}
 	
-	
 	@Test
 	public void testMapperCreatesDtoFromFlatDomainObject() {
 		
@@ -37,10 +37,9 @@ public class ModelMapperFrameworkTest {
 		Assert.assertEquals(pedidoFlat.getRua(), dto.getRuaDestino());
 		Assert.assertEquals(pedidoFlat.getCidade(), dto.getCidadeDestino());
 		Assert.assertEquals(pedidoFlat.getCep(), dto.getCepDestino());
-		Assert.assertEquals(pedidoFlat.getNome(), dto.getPrimeiroNomeCliente());
+		Assert.assertEquals(pedidoFlat.getNomeCliente(), dto.getCliente());
 	}
 
-	
 	
 	@Test
 	public void testMapperCreatesDomainObjectFromDto() {
@@ -49,7 +48,7 @@ public class ModelMapperFrameworkTest {
 		
 		PedidoFlat pedidoFlat = mapper.map(dto, PedidoFlat.class);
 		
-		Assert.assertEquals(pedidoFlat.getNome(),dto.getPrimeiroNomeCliente());
+		Assert.assertEquals(pedidoFlat.getNomeCliente(),dto.getCliente());
 		Assert.assertEquals(pedidoFlat.getRua(),dto.getRuaDestino());
 		Assert.assertEquals(String.valueOf(pedidoFlat.getNumero()), dto.getNumeroDestino());
 		Assert.assertEquals(pedidoFlat.getCidade(),dto.getCidadeDestino());
@@ -65,23 +64,31 @@ public class ModelMapperFrameworkTest {
 
 			@Override
 			protected void configure() {
-				map().setPrimeiroNomeCliente(source.getCliente().getNome().getPrimeiroNome());
+				map().setCliente(source.getCliente().getNome().getPrimeiroNome());
 			}
 		});
 
 		PedidoDto dto = mapper.map(pedido, PedidoDto.class);
 		
+		
 		Assert.assertEquals(pedido.getDestino().getNumero(), String.valueOf(dto.getNumeroDestino()));
 		Assert.assertEquals(pedido.getDestino().getRua(), dto.getRuaDestino());
 		Assert.assertEquals(pedido.getDestino().getCidade(), dto.getCidadeDestino());
 		Assert.assertEquals(pedido.getDestino().getCep(), dto.getCepDestino());
-		Assert.assertEquals(pedido.getCliente().getNome().getPrimeiroNome(), dto.getPrimeiroNomeCliente());
+		Assert.assertEquals(pedido.getCliente().getNome().getPrimeiroNome(), dto.getCliente());
+		Assert.assertEquals(pedido.getProdutos().size(), dto.getProdutos().size());
+		Assert.assertEquals(pedido.getProdutos().get(0).getCodigo(), dto.getProdutos().get(0).getCodigo());
 	}
 
 	private Pedido geraPedido() {
+		
 		Cliente cliente = clienteNico();
 		Endereco destino = naRuaBuarqueDeMacedo();
+		
 		Pedido pedido = new Pedido(cliente, destino);
+		Produto produto = new  Produto("iphone", "223344");
+		pedido.adicionaProduto(produto);
+		
 		return pedido;
 	}
 	
@@ -89,7 +96,7 @@ public class ModelMapperFrameworkTest {
 	private PedidoDto geraPedidoDto() {
 		
 		PedidoDto dto = new PedidoDto();
-		dto.setPrimeiroNomeCliente("Jo??o");
+		dto.setCliente("Jo??o");
 		dto.setRuaDestino("Catete");
 		dto.setNumeroDestino("50");
 		dto.setCidadeDestino("Rio");
@@ -101,7 +108,7 @@ public class ModelMapperFrameworkTest {
 		PedidoFlat pedidoFlat = new PedidoFlat();
 		pedidoFlat.setCep("20040-030");
 		pedidoFlat.setCidade("Rio");
-		pedidoFlat.setNome("Nome");
+		pedidoFlat.setNomeCliente("Nome");
 		pedidoFlat.setRua("Catete");
 		return pedidoFlat;
 	}

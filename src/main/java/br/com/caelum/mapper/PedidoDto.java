@@ -1,19 +1,32 @@
 package br.com.caelum.mapper;
 
+import java.util.List;
+
 public class PedidoDto {
 	
-	private String primeiroNomeCliente;
+	private String cliente;
+	
 	private String ruaDestino;
 	private String numeroDestino;
 	private String cidadeDestino;
 	private String cepDestino;
+	
+	private List<ProdutoDto> produtos;
 
-	public String getPrimeiroNomeCliente() {
-		return primeiroNomeCliente;
+	public List<ProdutoDto> getProdutos() {
+		return produtos;
 	}
 
-	public void setPrimeiroNomeCliente(String primeiroNomeCliente) {
-		this.primeiroNomeCliente = primeiroNomeCliente;
+	public void setProdutos(List<ProdutoDto> produtos) {
+		this.produtos = produtos;
+	}
+
+	public String getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(String cliente) {
+		this.cliente = cliente;
 	}
 
 	public String getRuaDestino() {

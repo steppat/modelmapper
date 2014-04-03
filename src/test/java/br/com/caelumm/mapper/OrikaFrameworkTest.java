@@ -27,7 +27,7 @@ public class OrikaFrameworkTest {
 			field("cidade", "cidadeDestino").
 			field("cep", "cepDestino").
 			field("numero", "numeroDestino").
-			field("nome", "primeiroNomeCliente").
+			field("nomeCliente", "cliente").
 		register();
 		
 		mapperFactory.classMap(Pedido.class, PedidoDto.class).
@@ -35,7 +35,7 @@ public class OrikaFrameworkTest {
 			fieldAToB("destino.cidade", "cidadeDestino").
 			fieldAToB("destino.cep", "cepDestino").
 			fieldAToB("destino.numero", "numeroDestino").
-			fieldAToB("cliente.nome.primeiroNome", "primeiroNomeCliente").
+			fieldAToB("cliente.nome.primeiroNome", "cliente").
 		register();
 		
 		
@@ -55,7 +55,7 @@ public class OrikaFrameworkTest {
 		Assert.assertEquals(pedidoFlat.getRua(), dto.getRuaDestino());
 		Assert.assertEquals(pedidoFlat.getCidade(), dto.getCidadeDestino());
 		Assert.assertEquals(pedidoFlat.getCep(), dto.getCepDestino());
-		Assert.assertEquals(pedidoFlat.getNome(), dto.getPrimeiroNomeCliente());
+		Assert.assertEquals(pedidoFlat.getNomeCliente(), dto.getCliente());
 	}
 
 	
@@ -67,7 +67,7 @@ public class OrikaFrameworkTest {
 		
 		PedidoFlat pedidoFlat = mapper.map(dto, PedidoFlat.class);
 		
-		Assert.assertEquals(pedidoFlat.getNome(),dto.getPrimeiroNomeCliente());
+		Assert.assertEquals(pedidoFlat.getNomeCliente(),dto.getCliente());
 		Assert.assertEquals(pedidoFlat.getRua(),dto.getRuaDestino());
 		Assert.assertEquals(String.valueOf(pedidoFlat.getNumero()), dto.getNumeroDestino());
 		Assert.assertEquals(pedidoFlat.getCidade(),dto.getCidadeDestino());
@@ -85,7 +85,7 @@ public class OrikaFrameworkTest {
 		Assert.assertEquals(pedido.getDestino().getRua(), dto.getRuaDestino());
 		Assert.assertEquals(pedido.getDestino().getCidade(), dto.getCidadeDestino());
 		Assert.assertEquals(pedido.getDestino().getCep(), dto.getCepDestino());
-		Assert.assertEquals(pedido.getCliente().getNome().getPrimeiroNome(), dto.getPrimeiroNomeCliente());
+		Assert.assertEquals(pedido.getCliente().getNome().getPrimeiroNome(), dto.getCliente());
 	}
 
 	private Pedido geraPedido() {
@@ -99,7 +99,7 @@ public class OrikaFrameworkTest {
 	private PedidoDto geraPedidoDto() {
 		
 		PedidoDto dto = new PedidoDto();
-		dto.setPrimeiroNomeCliente("Jo??o");
+		dto.setCliente("Jo??o");
 		dto.setRuaDestino("Catete");
 		dto.setNumeroDestino("50");
 		dto.setCidadeDestino("Rio");
@@ -111,7 +111,7 @@ public class OrikaFrameworkTest {
 		PedidoFlat pedidoFlat = new PedidoFlat();
 		pedidoFlat.setCep("20040-030");
 		pedidoFlat.setCidade("Rio");
-		pedidoFlat.setNome("Joao");
+		pedidoFlat.setNomeCliente("Joao");
 		pedidoFlat.setRua("Catete");
 		return pedidoFlat;
 	}

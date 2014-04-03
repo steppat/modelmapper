@@ -2,7 +2,7 @@ package br.com.caelum.mapper.modelo;
 
 public class PedidoFlat {
 
-	private String nome;
+	private String nomeCliente;
 	private String rua;
 	private int numero;
 	private String cidade;
@@ -16,12 +16,12 @@ public class PedidoFlat {
 		this.numero = numero;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getNomeCliente() {
+		return nomeCliente;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNomeCliente(String nome) {
+		this.nomeCliente = nome;
 	}
 
 	public String getRua() {

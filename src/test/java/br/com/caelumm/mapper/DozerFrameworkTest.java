@@ -40,7 +40,7 @@ public class DozerFrameworkTest {
 		PedidoFlat pedidoFlat = new PedidoFlat();
 		pedidoFlat.setCep("20040-030");
 		pedidoFlat.setCidade("Rio");
-		pedidoFlat.setNome("Nome");
+		pedidoFlat.setNomeCliente("Nome");
 		pedidoFlat.setRua("Catete");
 		pedidoFlat.setNumero(50);
 		return pedidoFlat;
